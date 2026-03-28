@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Notas</title>
+    <style>
+        table { border-collapse: collapse; width: 50%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        .highlight { background-color: #d4edda; color: #155724; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Registro de Calificaciones</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Nota</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each studentsList}}
+            <tr {{#if (isHighGrade this.grade)}} class="highlight" {{/if}}>
+                <td>{{this.name}}</td>
+                <td>{{this.grade}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <a href="/">Volver al inicio</a>
+</body>
+</html>
