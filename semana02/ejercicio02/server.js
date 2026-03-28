@@ -5,7 +5,6 @@ const handlebars = require("handlebars");
 
 const PORT = 3000;
 
-// REGISTRO DE HELPER: Permite comparar si la nota es mayor a 15
 handlebars.registerHelper('isHighGrade', function (grade) {
     return grade > 15;
 });
@@ -50,7 +49,6 @@ const server = http.createServer((req, res) => {
         return;
     }
 
-    // Lógica para leer y renderizar la plantilla elegida
     const filePath = path.join(__dirname, "views", viewName);
 
     fs.readFile(filePath, "utf8", (err, templateData) => {
@@ -60,12 +58,9 @@ const server = http.createServer((req, res) => {
             return;
         }
 
-        // 1. Compilar
         const template = handlebars.compile(templateData);
-        // 2. Renderizar con los datos correspondientes
         const html = template(data);
 
-        // 3. Enviar respuesta
         res.setHeader("Content-Type", "text/html; charset=utf-8");
         res.end(html);
     });
